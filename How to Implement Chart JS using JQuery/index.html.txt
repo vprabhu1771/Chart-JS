@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <div>
+        <canvas id="myChart" width="800px" height="150px"></canvas>
+      </div>
+    
+</body>
+</html>
+
+<script>
+  $(document).ready(function(){
+
+    const monthName = [
+        'January', 
+        'February', 
+        'March', 
+        'April', 
+        'May', 
+        'June', 
+        'July', 
+        'August', 
+        'September', 
+        'October', 
+        'November', 
+        'December'
+    ];
+
+    const Jan = 10;
+
+    const Feb = 20;
+
+    const Mar = 30;
+
+    const Apr = 40;
+
+    const May = 50;
+
+    const Jun = 160;
+
+    const Jul = 70;
+
+    const Aug = 80;
+
+    const Sep = 90;
+
+    const Oct = 100;
+
+    const Nov = 110;
+
+    const Dec = 120;
+
+    const sales = [
+        Jan,
+        Feb,
+        Mar,
+        Apr,
+        May,
+        Jun,
+        Jul,
+        Aug,
+        Sep,
+        Oct,
+        Nov,
+        Dec
+    ];
+    
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: monthName,
+        datasets: [{
+        label: '# of Votes',
+        data: sales,
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+
+
+  });
+</script>
