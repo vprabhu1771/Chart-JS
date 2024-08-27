@@ -1,0 +1,1 @@
+$routes->get('/dashboard', 'Dashboard::index', ['as' => 'dashboard']);

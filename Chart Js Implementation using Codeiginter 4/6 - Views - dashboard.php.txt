@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <div>
+        <canvas id="myChart" width="900px" height="300px"></canvas>
+    </div>
+      
+    
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+
+        const month_name =[
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ];
+
+        const Jan =  <?= $jan ?>;
+        const Feb = <?= $feb ?>;
+        const Mar = <?= $mar ?>;
+        const Apr = <?= $apr ?>;
+        const May = <?= $may ?>;
+        const Jun = <?= $jun ?>;
+        const Jul = <?= $jul ?>;
+        const Aug = <?= $aug ?>;
+        const Sep = <?= $sep ?>;
+        const Oct = <?= $oct ?>;
+        const Nov = <?= $nov ?>;
+        const Dec = <?= $dec ?>;
+
+        const sales = [
+            Jan,
+            Feb,
+            Mar,
+            Apr,
+            May,
+            Jun,
+            Jul,
+            Aug,
+            Sep,
+            Oct,
+            Nov,
+            Dec            
+        ];
+
+        
+  const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: month_name,
+        datasets: [{
+        label: '# of Sales',
+        data: sales,
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+
+    })
+</script>

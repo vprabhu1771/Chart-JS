@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\SalesModel;
+
+class Dashboard extends BaseController
+{
+    public function index()
+    {
+       
+        // Get the current year
+        $currentYear = date('Y');
+
+        // Load the SalesModel
+        $salesModel = new SalesModel();
+
+        // Query the SalesModel for January sales data of the current year
+        $janSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 1)
+            ->countAllResults();
+
+        $febSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 2)
+            ->countAllResults();
+
+        $marSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 3)
+            ->countAllResults();
+
+        $aprSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 4)
+            ->countAllResults();   
+            
+        $maySales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 5)
+            ->countAllResults();
+            
+        $junSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 6)
+            ->countAllResults();
+            
+        $julSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 7)
+            ->countAllResults();  
+            
+        $augSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 8)
+            ->countAllResults();
+
+        $sepSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 9)
+            ->countAllResults();
+            
+        $octSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 10)
+            ->countAllResults();
+            
+        $novSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 11)
+            ->countAllResults();
+            
+        $decSales = $salesModel
+            ->where('YEAR(created_at)', $currentYear)
+            ->where('MONTH(created_at)', 12)
+            ->countAllResults();    
+
+        $data = [
+            'jan' => $janSales,
+            'feb' => $febSales,
+            'mar' => $marSales,
+            'apr' => $aprSales,
+            'may' => $maySales,
+            'jun' => $junSales,
+            'jul' => $julSales,
+            'aug' => $augSales,
+            'sep' => $sepSales,
+            'oct' => $octSales,
+            'nov' => $novSales,
+            'dec' => $decSales
+
+        ];
+
+        // dd($data);
+        return view('dashboard', $data);
+    }
+}
